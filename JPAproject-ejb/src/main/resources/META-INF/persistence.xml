@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="JPAproject-ejb">
+		<jta-data-source>java:/infobDS</jta-data-source>
+		<class>Manytomany.Chercheur</class>
+		<class>Manytomany.TachPK</class>
+		<class>Manytomany.Tache</class>
+		<class>Manytomany.projet</class>
+		<class>onetomany_bi.Etudiant</class>
+		<class>onetomany_bi.TravauxPratiques</class>
+		<class>onetomany_uni.Employee</class>
+		<class>onetomany_uni.Laboratoire</class>
+		<class>onetoone_bi.Contact1</class>
+		<class>onetoone_bi.Employe</class>
+		<class>onetoone_uni.Ecole</class>
+		<class>onetoone_uni.Eleve</class>
+		<class>jpaproject.Contact</class>
+		<class>jpaproject.Femme</class>
+		<class>jpaproject.Homme</class>
+		<class>jpaproject.Personne</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+<!-- 			<property name="hibernate.show_sql" value="true"/> -->
+<!-- 			<property name="hibernate.format_sql" value="true"/> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+		</properties>
+	</persistence-unit>
+</persistence>
