@@ -16,27 +16,28 @@ public class Personnee implements Serializable {
 
 	   
 	@Id
+	
 	private int id;
 	private String name;
 	private String lastname ;
 	private static final long serialVersionUID = 1L;
-//	@OneToMany(mappedBy="personne")
-//	private List<Voiture> voitures ;
+	@OneToMany(mappedBy="personne")
+	private List<Voiture> voitures ;
 
 	
 	
-	public Personnee(int id, String name, String lastname) {
+	public Personnee(int id ,String lastname, String name) {
 		super();
-		this.id = id;
+		this.id = id ;
 		this.name = name;
 		this.lastname = lastname;
 	}
-//	public List<Voiture> getVoitures() {
-//		return voitures;
-//	}
-//	public void setVoitures(List<Voiture> voitures) {
-//		this.voitures = voitures;
-//	}
+	public List<Voiture> getVoitures() {
+		return voitures;
+	}
+	public void setVoitures(List<Voiture> voitures) {
+		this.voitures = voitures;
+	}
 	public Personnee() {
 		super();
 	}   
@@ -59,6 +60,10 @@ public class Personnee implements Serializable {
 	}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	@Override
+	public String toString() {
+		return "Personnee [id=" + id + ", name=" + name + ", lastname=" + lastname + ", voitures=" + voitures + "]";
 	}
    
 }

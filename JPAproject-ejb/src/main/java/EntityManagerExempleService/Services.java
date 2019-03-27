@@ -6,8 +6,10 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
+
+import EntityManagerExemple.Reclamation;
+import EntityManagerExemple.TypeReclamation;
 import EntityManagerExemple.Voiture;
 
 /**
@@ -31,7 +33,7 @@ public class Services implements ServicesRemote, ServicesLocal {
 	public void add(Voiture voiture) {
 		// TODO Auto-generated method stub
 		em.persist(voiture);
-		em.flush();
+		
 	}
 
 	@Override
@@ -62,7 +64,35 @@ public class Services implements ServicesRemote, ServicesLocal {
 		return em.createQuery(
 			    "SELECT c FROM Voiture c WHERE c.marque LIKE :custMarque")
 			    .setParameter("custMarque", m)
-			    .setMaxResults(10)
+			    .getResultList();
+	}
+
+	@Override
+	public void addReclamation(Reclamation R) {
+		// TODO Auto-generated method stub
+		em.persist(R);
+		
+	}
+
+	@Override
+	public void removeReclamation(Reclamation R) {
+		// TODO Auto-generated method stub
+		if(em.contains(R)){
+			em.remove(R);
+		}
+		else 
+		{
+			System.out.println("Reclamation inexistante");
+		}
+		
+	}
+
+	@Override
+	public List findByType(TypeReclamation type) {
+		// TODO Auto-generated method stub
+		return em.createQuery(
+			    "SELECT c FROM Reclamation c WHERE c.type = :Rtype")
+			    .setParameter("Rtype",type )
 			    .getResultList();
 	}
 

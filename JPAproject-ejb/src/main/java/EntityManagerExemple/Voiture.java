@@ -14,25 +14,26 @@ public class Voiture implements Serializable {
 
 	   
 	@Id
+	
 	private int id;
 	private String marque;
 	private static final long serialVersionUID = 1L;
-	//@ManyToOne
-	//private Personnee personne ;
+	@ManyToOne
+	private Personnee personne ;
 	
 	
-	public Voiture(int id, String marque) {
+	public Voiture(int id ,String marque,Personnee personne) {
 		super();
-		this.id = id;
-		this.marque = marque;
-		//this.personne = personne;
+		this.id       =   id;
+		this.marque   =   marque;
+		this.personne =   personne;
 	}
-//	public Personnee getPersonne() {
-//		return personne;
-//	}
-//	public void setPersonne(Personnee personne) {
-//		this.personne = personne;
-//	}
+	public Personnee getPersonne() {
+		return personne;
+	}
+	public void setPersonne(Personnee personne) {
+		this.personne = personne;
+	}
 	public Voiture() {
 		super();
 	}   
