@@ -16,8 +16,6 @@ public interface ServicesLocal {
 	//public List<Voiture> findAll();
 	public List findAll();
 	public List findByMarque(String marque);
-	public void addReclamation(Reclamation R);
-	public void removeReclamation(Reclamation R);
-	public List findByType(TypeReclamation type);
+	
 
 }

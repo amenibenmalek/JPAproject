@@ -18,6 +18,7 @@
 		<class>jpaproject.Femme</class>
 		<class>jpaproject.Homme</class>
 		<class>jpaproject.Personne</class>
+		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update"/>
 <!-- 			<property name="hibernate.show_sql" value="true"/> -->

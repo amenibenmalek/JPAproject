@@ -1,9 +1,11 @@
 package EntityManagerExemple;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+
 
 
 
@@ -14,21 +16,24 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Reclamation{
+
+public class Reclamation implements Serializable {
 
 
 	@Id
 	private int id;
-	@Temporal(TemporalType.TIMESTAMP)
+//	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_reclamation")
 	private Date date_reclamation;
+	
 	@Column(name="description")
 	private String description;
-	@Enumerated(EnumType.STRING)
+	
 	@Column(name="type")
-	private TypeReclamation type ;
-	@Column(name="users_id")
-	private int idp ;
+	private TypeReclamation  type ; 
+	
+	@ManyToOne
+	private Personnee users;
 	private static final long serialVersionUID = 1L;
 
 	public Reclamation() {
@@ -36,27 +41,23 @@ public class Reclamation{
 	}   
 	
 	
-	public Reclamation(int id ,Date date_reclamation, String description, TypeReclamation type, int users) {
+	public Reclamation(int id ,Date date_reclamation, String description, TypeReclamation  type, Personnee users) {
 		super();
 		this.id = id ;
 		this.date_reclamation = date_reclamation;
 		this.description = description;
 		this.type = type;
-		this.idp = users;
+		this.users = users;
 	}
 
 
-	
-
-
-	
-	public int getIdp() {
-		return idp;
+	public Personnee getUsers() {
+		return users;
 	}
 
 
-	public void setIdp(int idp) {
-		this.idp = idp;
+	public void setUsers(Personnee users) {
+		this.users = users;
 	}
 
 
@@ -76,6 +77,13 @@ public class Reclamation{
 	public void setDate_reclamation(Date date_reclamation) {
 		this.date_reclamation = date_reclamation;
 	}
+	@Override
+	public String toString() {
+		return "Reclamation [id=" + id + ", date_reclamation=" + date_reclamation + ", description=" + description
+				+ ", type=" + type + ", users=" + users + "]";
+	}
+
+
 	public String getDescription() {
 		return description;
 	}
@@ -89,7 +97,7 @@ public class Reclamation{
 	}
 
 
-	public void setType(TypeReclamation type) {
+	public void setType(TypeReclamation  type) {
 		this.type = type;
 	}
 
